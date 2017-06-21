@@ -2,6 +2,5 @@ FROM php:fpm
 MAINTAINER Tan Yeong How "yeonghowtan@gmail.com"
 
 RUN apt-get update
-RUN apt-get install -y build-essential python python-pip build-essential libssl-dev libffi-dev python-dev
-RUN pip install --upgrade cryptography
-RUN pip install --upgrade paramiko
+RUN apt-get update && apt-get install -y rsync openssh-server libffi-dev libssl-dev python-dev
+RUN pip install paramiko web.py docker-py==1.7.1 raven contextlib2
