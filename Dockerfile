@@ -10,3 +10,5 @@ RUN ls -ld /var/www/html
 USER www-data
 
 VOLUME /var/www/html
+
+RUN ls -ld /var/www/html
