@@ -10,5 +10,5 @@ RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 774 /var/www/html
 RUN ls -ld /var/www/html
 
-
-
+RUN find /var/www/html -type d -exec chmod g+s {} +
+RUN ls -ld /var/www/html
