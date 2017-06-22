@@ -6,3 +6,7 @@ RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python
 
 RUN chown -R www-data:www-data /var/www/html
 RUN ls -ld /var/www/html
+
+USER www-data
+
+VOLUME /var/www/html
