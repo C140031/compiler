@@ -4,11 +4,8 @@ MAINTAINER Tan Yeong How "yeonghowtan@gmail.com"
 RUN apt-get update
 RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python-pip python-paramiko
 
-RUN useradd -G www-data ec2-user
-
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 774 /var/www/html
-RUN ls -ld /var/www/html
-
-RUN find /var/www/html -type d -exec chmod g+s {} +
-RUN ls -ld /var/www/html
+RUN set -ex; \
+	wget -O pypy.tar.bz2 "https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.8.0-src.tar.bz2"; \
+	echo "9d090127335c3c0fd2b14c8835bf91752e62756e55ea06aad3353f24a6854223 *pypy.tar.bz2" | sha256sum -c; \
+	tar -xjC /usr/local --strip-components=1 -f pypy.tar.bz2; \
+	rm pypy.tar.bz2
