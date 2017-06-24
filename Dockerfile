@@ -13,14 +13,14 @@ RUN set -ex; \
 		bzip2 \
 		wget \
 	'; \
-	apt-get update && apt-get install -y $fetchDeps --no-install-recommends && rm -rf /var/lib/apt/lists/*
-
-RUN cd /opt && wget "https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.8.0-src.tar.bz2" && \
-    echo "$PYPY_SHA256SUM *pypy3-v5.8.0-src.tar.bz2" | sha256sum -c && \
-    tar -xf pypy3-v5.8.0-src.tar.bz2 && \
-    ln -s /opt/pypy3-v5.8.0-src/bin/pypy /usr/local/bin && \
-    pypy --version && \
-    rm pypy3-v5.8.0-src.tar.bz2
+	apt-get update && apt-get install -y $fetchDeps --no-install-recommends && rm -rf /var/lib/apt/lists/*; \
+	cd /opt; \
+	wget "https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.8.0-src.tar.bz2"; \
+        echo "$PYPY_SHA256SUM *pypy3-v5.8.0-src.tar.bz2" | sha256sum -c; \
+        tar -xf pypy3-v5.8.0-src.tar.bz2; \
+        ln -s /opt/pypy3-v5.8.0-src/bin/pypy /usr/local/bin; \
+        pypy --version; \
+        rm pypy3-v5.8.0-src.tar.bz2
     
 RUN cd /opt/pypy3-v5.8.0-src/bin/pypy && -m ensurepip
 RUN cd /opt/pypy3-v5.8.0-src/bin/pip install -U pip wheel
