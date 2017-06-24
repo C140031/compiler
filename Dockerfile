@@ -7,9 +7,6 @@ RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python
 ENV PYPY_VERSION 5.8.0
 ENV PYPY_SHA256SUM 9d090127335c3c0fd2b14c8835bf91752e62756e55ea06aad3353f24a6854223
 
-# if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 6.1.1
-
 RUN set -ex; \
 	\
 	fetchDeps=' \
@@ -21,17 +18,4 @@ RUN set -ex; \
 	wget -O pypy.tar.bz2 "https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.8.0-src.tar.bz2"; \
 	echo "$PYPY_SHA256SUM *pypy.tar.bz2" | sha256sum -c; \
 	tar -xjC /usr/local --strip-components=1 -f pypy.tar.bz2; \
-	rm pypy.tar.bz2; \
-	\
-	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
-	\
-	pypy get-pip.py \
-		--disable-pip-version-check \
-		--no-cache-dir \
-		"pip==$PYTHON_PIP_VERSION" \
-	; \
-	pip --version; \
-	\
-	rm -f get-pip.py; \
-	\
-	apt-get purge -y --auto-remove $fetchDeps
+	rm pypy.tar.bz2
