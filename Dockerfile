@@ -2,23 +2,10 @@ FROM php:fpm
 MAINTAINER Tan Yeong How "yeonghowtan@gmail.com"
 
 RUN apt-get update
-RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python-pip
+RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python-pip pypy python-pypy.sandbox
 
-RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y wget && \
-  rm -rf /var/lib/apt/lists/*
-  
-RUN cd /opt && wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
-    tar -xvf pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
-    ln -s /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy /usr/local/bin && \
-    pypy --version && \
-    ls /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy && \
-    cd /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy && \
-    ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone.py && \
-    
-    
+RUN ls /usr/lib && \
+    ls /usr/lib/python2.7/dist-packages/pypy/ && \
+    ln -s /usr/lib/python2.7/dist-packages/pypy/ /usr/lib/pypy/dist-packages/
 
 USER www-data
