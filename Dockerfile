@@ -4,8 +4,7 @@ MAINTAINER Tan Yeong How "yeonghowtan@gmail.com"
 RUN apt-get update
 RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python-pip
 
-RUN groupadd -r www-data \
-  && useradd -r -g www-data www-data && \
+RUN useradd -r -g www-data www-data && \
   chown -R www-data:www-data /var/www/html && \
   chmod -R 775 /var/www/html && \
   ls -al /var/www/html
