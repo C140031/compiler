@@ -8,7 +8,7 @@ RUN ls /usr/lib && \
     ls /usr/lib/python2.7/dist-packages/pypy/ && \
     ln -s /usr/lib/python2.7/dist-packages/pypy/ /usr/lib/pypy/dist-packages/ && \
     pypy --version && \
-    ls /usr/lib/python2.7/dist-packages/pypy/sandbox && \
+    ls /usr/lib/pypy-sandbox && \
     cd /usr/lib/python2.7/dist-packages/pypy/sandbox && \
     pypy pypy_interact.py /usr/lib/pypy-sandbox/pypy-c-sandbox
 
