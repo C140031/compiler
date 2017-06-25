@@ -20,9 +20,9 @@ RUN set -ex; \
 	echo "$PYPY_SHA256SUM *pypy3-v5.8.0-src.tar.bz2" | sha256sum -c; \
 	tar -xf pypy3-v5.8.0-src.tar.bz2 && \
 	ls; \
+	ls /opt; \
 	ls ./opt/pypy3-v5.8.0-src/bin; \
 	ln -s /opt/pypy3-v5.8.0-src/bin/pypy /usr/local/bin; \
-	ls /opt/pypy3-v5.8.0-src/bin; \
         /opt/pypy3-v5.8.0-src/bin/pypy --version; \
 	rm pypy3-v5.8.0-src.tar.bz2
     
