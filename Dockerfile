@@ -6,6 +6,10 @@ RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python
 
 RUN ls /usr/lib && \
     ls /usr/lib/python2.7/dist-packages/pypy/ && \
-    ln -s /usr/lib/python2.7/dist-packages/pypy/ /usr/lib/pypy/dist-packages/
+    ln -s /usr/lib/python2.7/dist-packages/pypy/ /usr/lib/pypy/dist-packages/ && \
+    pypy --version && \
+    ls /usr/lib/python2.7/dist-packages/pypy/sandbox && \
+    cd /usr/lib/python2.7/dist-packages/pypy/sandbox/pypy && \
+    pypy pypy_interact.py /usr/lib/pypy-sandbox/pypy-c-sandbox
 
 USER www-data
