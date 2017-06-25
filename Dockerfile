@@ -6,8 +6,7 @@ RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python
 
 RUN usermod -a -G www-data www-data && \
   chown -R www-data:www-data /var/www/html && \
-  chmod -R 775 /var/www/html && \
-  ls -al /var/www/html
+  chmod -R 775 /var/www/html
 
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
@@ -19,8 +18,6 @@ RUN \
 RUN cd /opt && wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
     tar -xvf pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
     ln -s /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy /usr/local/bin && \
-    ls /opt; \
-    ls /opt/pypy-4.0.1-linux_x86_64-portable/bin; \
     pypy --version
 
 USER www-data
