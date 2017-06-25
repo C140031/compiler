@@ -4,10 +4,6 @@ MAINTAINER Tan Yeong How "yeonghowtan@gmail.com"
 RUN apt-get update
 RUN apt-get update && apt-get install -y libffi-dev libssl-dev python-dev python-pip
 
-RUN usermod -a -G www-data www-data && \
-  chown -R www-data:www-data /var/www/html && \
-  chmod -R 775 /var/www/html
-
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
@@ -20,4 +16,8 @@ RUN cd /opt && wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-4
     ln -s /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy /usr/local/bin && \
     pypy --version
 
+RUN usermod -a -G www-data www-data && \
+  chown -R www-data:www-data /var/www/html && \
+  chmod -R 775 /var/www/html
+  
 USER www-data
