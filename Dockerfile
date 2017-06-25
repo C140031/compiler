@@ -16,8 +16,4 @@ RUN cd /opt && wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-4
     ln -s /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy /usr/local/bin && \
     pypy --version
 
-RUN usermod -a -G www-data www-data && \
-  chown -R www-data:www-data /var/www/html/scripts && \
-  chmod -R 775 /var/www/html/scripts
-
 USER www-data
