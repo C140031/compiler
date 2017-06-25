@@ -19,6 +19,8 @@ RUN set -ex; \
 	cd /opt && wget -O pypy3-v5.8.0-src.tar.bz2 "https://bitbucket.org/pypy/pypy/downloads/pypy3-v5.8.0-src.tar.bz2"; \
 	echo "$PYPY_SHA256SUM *pypy3-v5.8.0-src.tar.bz2" | sha256sum -c; \
 	tar -xf pypy3-v5.8.0-src.tar.bz2 && \
+	ls; \
+	ls ./opt/pypy3-v5.8.0-src/bin; \
 	ln -s /opt/pypy3-v5.8.0-src/bin/pypy /usr/local/bin; \
 	ls /opt/pypy3-v5.8.0-src/bin; \
         /opt/pypy3-v5.8.0-src/bin/pypy --version; \
