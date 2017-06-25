@@ -14,6 +14,11 @@ RUN \
 RUN cd /opt && wget https://bitbucket.org/squeaky/portable-pypy/downloads/pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
     tar -xvf pypy-4.0.1-linux_x86_64-portable.tar.bz2 && \
     ln -s /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy /usr/local/bin && \
-    pypy --version
+    pypy --version && \
+    ls /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy && \
+    cd /opt/pypy-4.0.1-linux_x86_64-portable/bin/pypy && \
+    ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone.py && \
+    
+    
 
 USER www-data
