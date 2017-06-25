@@ -9,6 +9,9 @@ RUN \
     pypy --version && \
     ln -s /usr/lib/pypy-sandbox/x86_64-linux-gnu/pypy-c-sandbox /usr/lib/pypy-sandbox/pypy-c-sandbox && \
     cd /usr/lib/python2.7/dist-packages/pypy/sandbox && \
+    ls /usr/lib/pypy-sandbox && \
+    ls /usr/lib/pypy-sandbox/x86_64-linux-gnu && \
+    ls /usr/lib/pypy-sandbox && \
     pypy pypy_interact.py /usr/lib/pypy-sandbox/pypy-c-sandbox
 
 USER www-data
