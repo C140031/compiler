@@ -11,16 +11,20 @@ RUN \
 
 USER www-data
 
-# Install Java.
-RUN \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
-  add-apt-repository -y ppa:webupd8team/java && \
-  apt-get update && \
-  apt-get install -y oracle-java8-installer && \
-  sudo rm -rf /var/lib/apt/lists/* && \
-  sudo rm -rf /var/cache/oracle-jdk8-installer
+RUN apt-get update && apt-get install -y unzip && rm -rf /var/lib/apt/lists/*
 
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
 
-# Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV JAVA_VERSION 8u45
+ENV JAVA_DEBIAN_VERSION 8u45-b14-1
+
+# see https://bugs.debian.org/775775
+# and https://github.com/docker-library/java/issues/19#issuecomment-70546872
+ENV CA_CERTIFICATES_JAVA_VERSION 20140324
+
+RUN apt-get update && apt-get install -y openjdk-8-jdk="$JAVA_DEBIAN_VERSION" ca-certificates-java="$CA_CERTIFICATES_JAVA_VERSION" && rm -rf /var/lib/apt/lists/*
+
+# see CA_CERTIFICATES_JAVA_VERSION notes above
+RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
 
