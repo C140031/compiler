@@ -9,9 +9,17 @@ RUN \
     pypy --version && \
     ln -s /usr/lib/pypy-sandbox/x86_64-linux-gnu/pypy-c-sandbox /usr/lib/pypy-sandbox/pypy-c-sandbox
 
+#C
+RUN apt-get install -y gcc
+
+#prepare for Java download
+RUN apt-get install -y python-software-properties
+RUN apt-get install -y software-properties-common
+
+#grab oracle java (auto accept licence)
+RUN add-apt-repository -y ppa:webupd8team/java
+RUN apt-get update
+RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+RUN apt-get install -y oracle-java7-installer
+
 USER www-data
-
-# Install java
-RUN apt-get update && apt-get install -y openjdk7-jre
-
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
