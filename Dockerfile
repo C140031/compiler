@@ -14,7 +14,7 @@ RUN \
     ln -s /usr/lib/pypy-sandbox/x86_64-linux-gnu/pypy-c-sandbox /usr/lib/pypy-sandbox/pypy-c-sandbox
 
 # PHP
-RUN apt-get install -y php7.0-cli
+RUN apt-get install -y php5-cli
 
 # C
 RUN apt-get install -y gcc
