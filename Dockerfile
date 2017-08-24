@@ -5,7 +5,6 @@ RUN apt-get update
 
 # AppArmor
 RUN apt-get install -y apparmor apparmor-profiles apparmor-utils auditd
-RUN aa-status
 
 # Python
 RUN apt-get install -y libffi-dev libssl-dev python-dev python-pip pypy python-pypy.sandbox
