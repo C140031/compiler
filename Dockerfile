@@ -35,7 +35,6 @@ RUN chmod o-r /etc
 RUN chmod o-r /proc
 RUN chmod o-r /dev
 RUN chmod o-r /root
-RUN chmod o-r /sys
 RUN chmod o-r /lib
 
 USER www-data
