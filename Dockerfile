@@ -30,6 +30,7 @@ RUN apt-get install -y oracle-java8-installer
 
 RUN chmod o-x /bin
 RUN chmod o+x /bin/bash
+RUN chmod o+x /bin/dash
 
 #RUN chmod o-r /etc
 #RUN chmod o-r /proc
