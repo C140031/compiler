@@ -31,10 +31,10 @@ RUN apt-get install -y oracle-java8-installer
 RUN chmod o-x /bin
 RUN chmod o+x /bin/bash
 
-RUN chmod o-r /etc
-RUN chmod o-r /proc
-RUN chmod o-r /dev
-RUN chmod o-r /root
-RUN chmod o-r /lib
+#RUN chmod o-r /etc
+#RUN chmod o-r /proc
+#RUN chmod o-r /dev
+#RUN chmod o-r /root
+#RUN chmod o-r /lib
 
 USER www-data
