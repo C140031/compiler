@@ -30,8 +30,7 @@ RUN apt-get install -y oracle-java8-installer
 
 RUN chmod o-x /bin
 RUN chmod o+x /bin/bash
-RUN shopt -s extglob
-RUN chmod o-x /usr/bin/!(sudo|python|gcc|java|javac)
+
 RUN chmod o-r /etc
 RUN chmod o-r /proc
 RUN chmod o-r /dev
