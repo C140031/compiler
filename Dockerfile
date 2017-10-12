@@ -34,7 +34,6 @@ RUN chmod o+x /bin/bash
 RUN chmod o+x /bin/dash
 
 
-RUN chmod o-r /etc/*
 RUN chmod o-r /proc/*
 RUN chmod o-r /dev/*
 RUN chmod o-r /root/*
