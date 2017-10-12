@@ -34,9 +34,6 @@ RUN chmod o+x /bin/bash
 RUN chmod o+x /bin/dash
 
 
-RUN chmod o-r /proc/*
-RUN chmod o-r /dev/*
-RUN chmod o-r /root/*
-RUN chmod o-r /lib/*
+RUN chmod o-r /proc/stat
 
 USER www-data
