@@ -35,7 +35,7 @@ RUN chmod o+x /bin/dash
 RUN ls -al /bin
 
 #RUN chmod o-r /etc
-#RUN chmod o-r /proc
+RUN chmod o-r /proc
 #RUN chmod o-r /dev
 #RUN chmod o-r /root
 #RUN chmod o-r /lib
