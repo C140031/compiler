@@ -28,16 +28,16 @@ RUN apt-get update
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN apt-get install -y oracle-java8-installer
 
-RUN ls -al /bin
+
 RUN chmod o-x /bin/*
 RUN chmod o+x /bin/bash
 RUN chmod o+x /bin/dash
-RUN ls -al /bin
 
-#RUN chmod o-r /etc
+
+RUN chmod o-r /etc
 RUN chmod o-r /proc
-#RUN chmod o-r /dev
-#RUN chmod o-r /root
-#RUN chmod o-r /lib
+RUN chmod o-r /dev
+RUN chmod o-r /root
+RUN chmod o-r /lib
 
 USER www-data
