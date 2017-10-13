@@ -34,4 +34,4 @@ RUN chmod o+x /bin/bash
 RUN chmod o+x /bin/dash
 
 
-#USER www-data
+USER www-data
