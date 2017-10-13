@@ -29,11 +29,9 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 RUN apt-get install -y oracle-java8-installer
 
 
-RUN chmod o-x /bin/*
-RUN chmod o+x /bin/bash
-RUN chmod o+x /bin/dash
+#RUN chmod o-x /bin/*
+#RUN chmod o+x /bin/bash
+#RUN chmod o+x /bin/dash
 
 
-RUN chmod o-r /proc/stat
-
-USER www-data
+#USER www-data
